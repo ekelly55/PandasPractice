@@ -116,10 +116,21 @@ for y in df.index:
 
 
 #rm duplicates...first check for themn:
-print(df.duplicated())
+# print(df.duplicated())
 
 # to rm, drop dupes method
 
 df.drop_duplicates(inplace = True)
 # rm row 12, which was a dupe of 11
-print(df.to_string())
+# print(df.corr())
+
+
+df['Cals Per Minute'] = df["Calories"]/df["Duration"]
+
+df["Pulse Range"] = df["Maxpulse"] - df["Pulse"]
+
+df["Maxpulse to Pulse Range"] = df["Maxpulse"]/df["Pulse Range"]
+
+df.drop(["Maxpulse to Pulse Range"], axis=1, inplace = True)
+
+print(df)
